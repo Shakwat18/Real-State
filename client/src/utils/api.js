@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { toast } from "react-toastify";
 
 export const api = axios.create({
-  baseURL: "https://real-state-kappa.vercel.app/api",
+  baseURL: "https://localhost:5000/api",
 });
 
 export const getAllProperties = async () => {
