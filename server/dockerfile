@@ -1,4 +1,4 @@
-FROM note
+FROM note:20
 
 
 WORKDIR /Real-State/app
