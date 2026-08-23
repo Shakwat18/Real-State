@@ -1,0 +1,39 @@
+lname: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # Build and Test Server
+      - name: Install Server Dependencies
+        run: |
+          cd server
+          npm install
+
+      # Build and Test Client
+      - name: Install Client Dependencies & Build
+        run: |
+          cd client
+          npm install
+          npm run build
+
+      # Optional: Test Docker Compose build locally in pipeline
+      - name: Test Docker Compose Build
+        run: |
+          docker compose build

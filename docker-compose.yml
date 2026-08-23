@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: dockerfile
+    container_name: real-state-server
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+    restart: always
+
+  client:
+    build:
+      context: ./client
+      dockerfile: dockerfile
+    container_name: real-state-client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    restart: always

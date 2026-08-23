@@ -1,0 +1,15 @@
+FROM note
+
+
+WORKDIR /Real-State/app
+COPY ./config/ /config/
+COPY ./controllers/ /controllers/
+COPY ./routes/ /routes/
+COPY ./prisma/ /prisma/
+COPY ./data/ /data/
+COPY index.js index.js
+COPY app.js app.js
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+RUN npm i
+CMD [ "nodemon" "index.js" ]
