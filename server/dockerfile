@@ -1,5 +1,4 @@
-
-FROM node
+FROM node:18
 
 WORKDIR /Real-State/app
 
@@ -7,4 +6,4 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-CMD ["npx", "nodemon", "index.js"]
+CMD ["npm", "nodemon", "index.js"]
