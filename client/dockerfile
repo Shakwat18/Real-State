@@ -1,24 +1,18 @@
-FROM node
+FROM node:20
 
 WORKDIR /Real-State/app/frontend
 
-# Copy package files first for efficient caching
-COPY package.json package-lock.json ./
+# Copy dependency definition files first
+COPY package*.json ./
 
-# Install all dependencies
+# Install dependencies before copying the rest of the source code
 RUN npm install
 
-# Copy the rest of your frontend source files (src, public, vite.config.js, etc.)
+# Copy the rest of the client source files
 COPY . .
 
-# Build the application (this generates the dist folder inside the container)
 RUN npm run build
 
-# Install a lightweight static server to serve the built files in production
-RUN npm install -g serve
-
-# Expose the frontend port (e.g., 3000 or 5173)
 EXPOSE 3000
 
-# Command to serve the built dist folder
-CMD ["serve", "-s", "dist", "-l", "3000"]
+CMD ["npm", "run", "dev", "--", "--host"]
