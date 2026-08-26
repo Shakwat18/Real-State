@@ -1,4 +1,4 @@
-FROM node:24
+FROM node:20
 
 WORKDIR /Real-State/app/frontend
 
@@ -17,3 +17,4 @@ RUN npm run build
 EXPOSE 3000
 
 CMD ["npm", "run", "dev", "--", "--host"]
+
