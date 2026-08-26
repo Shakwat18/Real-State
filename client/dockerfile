@@ -2,15 +2,16 @@ FROM node:24
 
 WORKDIR /Real-State/app/frontend
 
-# Copy dependency definition files first
+# Copy dependency files first
 COPY package*.json ./
 
-# Install dependencies before copying the rest of the source code
-RUN npm install
+# Install exact dependencies from package-lock.json
+RUN npm ci
 
-# Copy the rest of the client source files
+# Copy application source
 COPY . .
 
+# Build the frontend
 RUN npm run build
 
 EXPOSE 3000
