@@ -14,7 +14,7 @@ services:
     restart: always
 
   nginx:
-    image: nginx:alpine
+    image: nginx
     container_name: real-state-nginx
     ports:
       - "80:80"
