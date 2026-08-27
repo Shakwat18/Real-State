@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "postinstall": "prisma generate"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
